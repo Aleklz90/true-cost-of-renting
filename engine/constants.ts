@@ -1,0 +1,10 @@
+export const EJARI_REGISTRATION = 220;
+export const DEPOSIT_RATE_UNFURNISHED = 0.05;
+export const DEPOSIT_RATE_FURNISHED = 0.1;
+export const DEWA_DEPOSIT_APARTMENT = 4000;
+export const DEWA_DEPOSIT_VILLA = 2000;
+export const AGENCY_FEE_RATE = 0.05;
+export const VAT_RATE = AGENCY_FEE_RATE * 0.05;
+export const CHILLER_DEPOSIT_ESTIMATE = 2000;
+export const HOUSING_FEE_RATE = 0.05;
+export const DEWA_ACTIVATION_FEE = 130;
