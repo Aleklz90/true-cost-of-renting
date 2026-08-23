@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+#Renting calculator
 
-## Getting Started
+[Calculator for real renting cost evaluation](https://true-cost-of-renting.netlify.app/)
 
-First, run the development server:
+![This tool shows the full first-year picture: recurring housing fee, effective monthly vs listed monthly, refundable vs non-refundable split, cheque](https://ibb.co/vvkFcpJ8)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+| Constant                 | Value |
+| ------------------------ | ----- |
+| EJARI_REGISTRATION       | 220   |
+| DEPOSIT_RATE_UNFURNISHED | 0.05  |
+| DEPOSIT_RATE_FURNISHED   | 0.1   |
+| DEWA_DEPOSIT_APARTMENT   | 2000  |
+| DEWA_DEPOSIT_VILLA       | 4000  |
+| AGENCY_FEE_RATE          | 0.05  |
+| VAT_RATE                 | 0.05  |
+| CHILLER_DEPOSIT_ESTIMATE | 2000  |
+| HOUSING_FEE_RATE         | 0.05  |
+| DEWA_ACTIVATION_FEE      | 130   |
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<ol>
+    <li>No scraping</li>
+    <li>No accounts, no saved results, no shared links</li>
+    <li>No live chiller-provider rates(one labeled estimate)</li>
+    <li>No dark mode, no animations</li>
+    <li>No component libraries</li>
+</ol>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Stack: Next.js + TypeScript + Tailwind + Vitest
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+How to run: <code>npm run dev</code>
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+How to test: <code>npm test</code>
