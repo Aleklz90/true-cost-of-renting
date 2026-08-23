@@ -8,87 +8,92 @@ import {
   CHILLER_DEPOSIT_ESTIMATE,
   HOUSING_FEE_RATE,
   DEWA_ACTIVATION_FEE,
+  EJARI_REGISTRATION,
 } from "./constants";
-
-const totalAnnualRent = (annualRent: number) => {
-  return annualRent + annualRent * HOUSING_FEE_RATE;
-};
 
 export const calculateMoveInCash = (
   annualRent: number,
   chequeCount: number,
-  agencyFee: number,
-  ejariRegistration: number,
   securityDeposit: number,
   firstMove: boolean,
 ) => {
   // Upfront cash to move in = (annualRent / chequeCount) + Agency fee(5%, capped 5000) + Ejari registration + Security deposit
-  let fee = 0;
+
+  let activation;
+
   if (firstMove) {
-    fee = DEWA_ACTIVATION_FEE;
+    activation = DEWA_ACTIVATION_FEE;
+  } else {
+    activation = 0;
   }
-  return (
-    totalAnnualRent(annualRent) / chequeCount +
-    agencyFee +
-    ejariRegistration +
-    securityDeposit +
-    fee
+
+  return Number(
+    (
+      annualRent / chequeCount +
+      calculateAgencyFee(annualRent) +
+      EJARI_REGISTRATION +
+      securityDeposit +
+      activation
+    ).toFixed(0),
   );
 };
 
 export const calculateFirstYearTotal = (
   annualRent: number,
   agencyFee: number,
-  ejariRegistration: number,
   housingFee: number,
+  firstMove: boolean,
 ) => {
   // firstYearTotal = annualRent + agency fee + ejari registration + housing fee
-  return (
-    totalAnnualRent(annualRent) + agencyFee + ejariRegistration + housingFee
-  );
+  let activation;
+  if (firstMove) {
+    activation = DEWA_ACTIVATION_FEE;
+  } else {
+    activation = 0;
+  }
+  return annualRent + agencyFee + EJARI_REGISTRATION + housingFee + activation;
 };
 
 export const calculateTrueMonthly = (
   annualRent: number,
   agencyFee: number,
-  ejariRegistration: number,
   housingFee: number,
+  firstMove: boolean,
 ) => {
   // trueMonthly = (annualRent + agency fee + ejari registration + housing fee) / 12
-  return (
-    calculateFirstYearTotal(
-      totalAnnualRent(annualRent),
-      agencyFee,
-      ejariRegistration,
-      housingFee,
-    ) / 12
+  return Number(
+    (
+      calculateFirstYearTotal(annualRent, agencyFee, housingFee, firstMove) / 12
+    ).toFixed(0),
   );
 };
 
 export const calculateListedMonthly = (annualRent: number) => {
-  return totalAnnualRent(annualRent) / 12;
+  return Number((annualRent / 12).toFixed(0));
 };
 
 export const calculateHousingFee = (annualRent: number) => {
   return {
-    annual: totalAnnualRent(annualRent) * 0.05,
-    monthly: (totalAnnualRent(annualRent) * 0.05) / 12,
+    annual: annualRent * HOUSING_FEE_RATE,
+    monthly: Number(((annualRent * HOUSING_FEE_RATE) / 12).toFixed(0)),
   };
 };
 
 export const calculateAgencyFee = (annualRent: number) => {
-  const fee = totalAnnualRent(annualRent) * (AGENCY_FEE_RATE + VAT_RATE);
-  return fee < 5000 ? fee : 5000;
+  const fee =
+    annualRent * AGENCY_FEE_RATE + annualRent * AGENCY_FEE_RATE * VAT_RATE;
+  return fee < 5250 ? fee : 5250;
 };
 
-export const evaluateCheque = (annualRent: number, chequeCount: number) => {
-  return totalAnnualRent(annualRent) / chequeCount;
+export const evaluateCheque = (firstYearTotal: number, chequeCount: number) => {
+  return Number((firstYearTotal / chequeCount).toFixed(0));
 };
 
 export const calculateTotalDeposit = (
   furnished: boolean,
   chiller: boolean,
   type: string,
+  annualRent: number,
 ) => {
   let total;
 
@@ -97,10 +102,10 @@ export const calculateTotalDeposit = (
   } else {
     total = DEWA_DEPOSIT_VILLA;
   }
-
   total = furnished
-    ? total + total * DEPOSIT_RATE_FURNISHED
-    : total + total * DEPOSIT_RATE_UNFURNISHED;
+    ? total + annualRent * DEPOSIT_RATE_FURNISHED
+    : total + annualRent * DEPOSIT_RATE_UNFURNISHED;
+  console.log(annualRent * DEPOSIT_RATE_FURNISHED);
   if (chiller) total = total + CHILLER_DEPOSIT_ESTIMATE;
 
   return total;

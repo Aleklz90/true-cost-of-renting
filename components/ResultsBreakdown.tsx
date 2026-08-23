@@ -1,5 +1,6 @@
 import { FcHome } from "react-icons/fc";
 import { Result } from "../types";
+import { EJARI_REGISTRATION } from "@/engine/constants";
 
 export const ResultsBreakdown = ({ result }: { result: Result }) => {
   const numberPrettier = (number: number) => {
@@ -13,6 +14,7 @@ export const ResultsBreakdown = ({ result }: { result: Result }) => {
 
     return result;
   };
+
   return (
     <form action="" className="w-full">
       <div className="flex gap-3">
@@ -25,7 +27,7 @@ export const ResultsBreakdown = ({ result }: { result: Result }) => {
           <h1>{numberPrettier(result.firstYearTotal)}</h1>
         </div>
         <div className="resultBlock">
-          <p>effective monthly</p>
+          <p>eff. monthly</p>
           <h1>{numberPrettier(result.trueMonthly)}</h1>
         </div>
       </div>
@@ -61,14 +63,14 @@ export const ResultsBreakdown = ({ result }: { result: Result }) => {
               </td>
             </tr>
             <tr>
-              <td>Agency fee(5%, capped 5000)</td>
+              <td>Agency fee(5%, capped 5000) + VAT</td>
               <td>One-time</td>
               <td>{numberPrettier(result.agencyFee)}</td>
             </tr>
             <tr>
               <td>Ejari registration</td>
               <td>One-time</td>
-              <td>{numberPrettier(result.EJARI_REGISTRATION)}</td>
+              <td>{numberPrettier(EJARI_REGISTRATION)}</td>
             </tr>
             <tr>
               <td>Security deposit</td>

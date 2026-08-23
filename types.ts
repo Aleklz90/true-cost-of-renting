@@ -20,8 +20,25 @@ export type Result = {
   annualRent: number;
   housingFee: HousingFee;
   agencyFee: number;
-  EJARI_REGISTRATION: number;
   totalDeposit: number;
   cheques: number;
   cheque: number;
+};
+
+export type ErrorsObj = {
+  annualRent: string;
+  cheques: string;
+  propertyType: string;
+  furnished: string;
+  chiller: string;
+  firstMove: string;
+};
+
+export type initTouchedFieldsObj = {
+  annualRent: boolean;
+  cheques: boolean;
+  propertyType: boolean;
+  furnished: boolean;
+  chiller: boolean;
+  firstMove: boolean;
 };
