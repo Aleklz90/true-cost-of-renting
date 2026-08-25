@@ -40,6 +40,8 @@ export const checkData = (
 
   updatedFormObj = {
     ...updatedFormObj,
+    cheques: data.cheques,
+    propertyType: data.propertyType,
     furnished: data.furnished,
     chiller: data.chiller,
     firstMove: data.firstMove,
