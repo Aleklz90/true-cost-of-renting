@@ -15,8 +15,8 @@ export const initTouchedFields = {
 
 export const initData = {
   annualRent: 0,
-  cheques: null,
-  propertyType: "" as const,
+  cheques: 1 as const,
+  propertyType: "apartment" as const,
   furnished: false,
   chiller: false,
   firstMove: false,
@@ -31,6 +31,6 @@ export const initResult = {
   housingFee: { annual: 0, monthly: 0 },
   agencyFee: 0,
   totalDeposit: 0,
-  cheques: null,
+  cheques: 1 as const,
   cheque: 0,
 };

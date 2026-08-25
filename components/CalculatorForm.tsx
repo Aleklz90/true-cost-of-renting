@@ -82,8 +82,8 @@ const CalculatorForm = () => {
                   setError(result.updatedErrorObj);
                 }
               }}
+              defaultValue={formData.cheques}
             >
-              <option value="">Select number...</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="4">4</option>
@@ -114,8 +114,8 @@ const CalculatorForm = () => {
                 setError(result.updatedErrorObj);
               }
             }}
+            defaultValue={formData.propertyType}
           >
-            <option value="">Select type...</option>
             <option value="apartment">apartment</option>
             <option value="villa">villa</option>
           </select>
