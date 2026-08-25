@@ -9,15 +9,16 @@ import {
   HOUSING_FEE_RATE,
   DEWA_ACTIVATION_FEE,
   EJARI_REGISTRATION,
+  AGENCY_CAP,
 } from "./constants";
 import { PropertyType } from "@/types";
 
 export const calculateMoveInCash = (
   annualRent: number,
+  agencyFee: number,
   chequeCount: number,
   securityDeposit: number,
   firstMove: boolean,
-  agencyFee: number,
 ) => {
   // Upfront cash to move in = (annualRent / chequeCount) + Agency fee(5%, capped 5000) + Ejari registration + Security deposit
 
@@ -31,7 +32,7 @@ export const calculateMoveInCash = (
 
   return (
     annualRent / chequeCount +
-    calculateAgencyFee(annualRent) +
+    agencyFee +
     EJARI_REGISTRATION +
     securityDeposit +
     activation
@@ -80,7 +81,7 @@ export const calculateHousingFee = (annualRent: number) => {
 export const calculateAgencyFee = (annualRent: number) => {
   const fee =
     annualRent * AGENCY_FEE_RATE + annualRent * AGENCY_FEE_RATE * VAT_RATE;
-  return fee < 5000 * (1 + VAT_RATE) ? fee : 5000 * (1 + VAT_RATE);
+  return fee < AGENCY_CAP ? fee : AGENCY_CAP;
 };
 
 export const evaluateCheque = (annualRent: number, chequeCount: number) => {

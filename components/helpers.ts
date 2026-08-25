@@ -79,6 +79,14 @@ export const checkData = (
 };
 
 export const buttonCheck = (formData: InputData, error: ErrorsObj) => {
+  console.log(
+    formData.annualRent,
+    formData.cheques,
+    formData.propertyType,
+    !error.annualRent,
+    !error.cheques,
+    !error.propertyType,
+  );
   if (
     formData.annualRent &&
     formData.cheques &&
@@ -104,10 +112,10 @@ export const countResults = (formData: InputData) => {
   );
   const moveInCash = calculateMoveInCash(
     formData.annualRent,
+    agencyFee,
     formData.cheques,
     totalDeposit,
     formData.firstMove,
-    agencyFee,
   );
   const firstYearTotal = calculateFirstYearTotal(
     formData.annualRent,

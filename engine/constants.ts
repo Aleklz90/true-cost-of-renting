@@ -8,3 +8,4 @@ export const VAT_RATE = 0.05;
 export const CHILLER_DEPOSIT_ESTIMATE = 2000;
 export const HOUSING_FEE_RATE = 0.05;
 export const DEWA_ACTIVATION_FEE = 130;
+export const AGENCY_CAP = 5000 * (1 + VAT_RATE);

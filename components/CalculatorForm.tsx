@@ -26,10 +26,12 @@ const CalculatorForm = () => {
     return v === "apartment" || v === "villa";
   };
 
+  console.log(buttonCheck(formData, error));
+
   return (
     <div className="flex flex-col gap-5 justify-between lg:flex-row p-6">
       <form
-        className="w-full sideblock"
+        className="w-full sideblock place-content-between"
         onSubmit={(e) => {
           e.preventDefault();
           const results = countResults(formData);

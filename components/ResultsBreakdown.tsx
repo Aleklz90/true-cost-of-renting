@@ -4,7 +4,7 @@ import { EJARI_REGISTRATION } from "@/engine/constants";
 
 export const ResultsBreakdown = ({ result }: { result: Result }) => {
   const numberPrettier = (number: number) => {
-    return new Intl.NumberFormat("ar-AE", {
+    return new Intl.NumberFormat("en", {
       style: "currency",
       currency: "AED",
     }).format(number);
