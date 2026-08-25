@@ -46,7 +46,3 @@ test("calculator i/o test(villa)", async () => {
   expect(screen.getByText("AED 11,245.00")).toBeInTheDocument();
   expect(screen.getByText("AED 937.08")).toBeInTheDocument();
 });
-
-afterEach(() => {
-  cleanup();
-});

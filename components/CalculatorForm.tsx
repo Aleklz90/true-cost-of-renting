@@ -26,8 +26,6 @@ const CalculatorForm = () => {
     return v === "apartment" || v === "villa";
   };
 
-  console.log(buttonCheck(formData, error));
-
   return (
     <div className="flex flex-col gap-5 justify-between lg:flex-row p-6">
       <form
