@@ -39,7 +39,7 @@ form {
   flex-direction: column;
   gap: 16px;
   border-radius: 24px;
-  padding: 32px;
+  padding: 18px;
   background-color: white;
   height: auto;
 }
@@ -124,8 +124,8 @@ th {
 }
 
 td {
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 8px;
+  padding-right: 8px;
   padding-top: 12px;
   padding-bottom: 12px;
   border-top: 1px solid #e3e3e3;

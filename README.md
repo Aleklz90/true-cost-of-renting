@@ -1,8 +1,8 @@
-#Renting calculator
+# Renting calculator
 
 [Calculator for real renting cost evaluation](https://true-cost-of-renting.netlify.app/)
 
-![This tool shows the full first-year picture: recurring housing fee, effective monthly vs listed monthly, refundable vs non-refundable split, cheque](https://ibb.co/vvkFcpJ8)
+This tool shows the full first-year picture: recurring housing fee, effective monthly vs listed monthly, refundable vs non-refundable split, cheque
 
 | Constant                 | Value |
 | ------------------------ | ----- |

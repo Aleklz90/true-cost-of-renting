@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Result } from "../types";
+import { Result, inputData, Checks, PropertyType } from "../types";
 import ResultsBreakdown from "./ResultsBreakdown";
 import { checkData, buttonCheck, countResults } from "./helpers";
 
@@ -13,13 +13,21 @@ import {
 } from "./initStates";
 
 const CalculatorForm = () => {
-  const [formData, setFormData] = useState(initData);
+  const [formData, setFormData] = useState<inputData>(initData);
   const [error, setError] = useState(iniErrorObj);
   const [touchedFields, setTouchedFields] = useState(initTouchedFields);
   const [result, setResult] = useState<Result>(initResult);
 
+  const isValidNumberOfChecks = (v: unknown): v is Checks => {
+    return v === 1 || v === 2 || v === 4 || v === 6 || v === 12;
+  };
+
+  const isValidPropertyType = (v: unknown): v is PropertyType => {
+    return v === "apartment" || v === "value";
+  };
+
   return (
-    <div className="flex flex-col gap-5 justify-between sm:flex-row p-6">
+    <div className="flex flex-col gap-5 justify-between lg:flex-row p-6">
       <form
         className="w-full"
         onSubmit={(e) => {
@@ -60,15 +68,18 @@ const CalculatorForm = () => {
                 setTouchedFields({ ...touchedFields, cheques: true })
               }
               onBlurCapture={(e) => {
-                const result = checkData(
-                  { ...formData, cheques: Number(e.target.value) },
-                  error,
-                  formData,
-                  touchedFields,
-                );
-                setFormData(result.updatedFormObj);
+                const number = Number(e.target.value);
+                if (isValidNumberOfChecks(number)) {
+                  const result = checkData(
+                    { ...formData, cheques: number },
+                    error,
+                    formData,
+                    touchedFields,
+                  );
+                  setFormData(result.updatedFormObj);
 
-                setError(result.updatedErrorObj);
+                  setError(result.updatedErrorObj);
+                }
               }}
             >
               <option value="">Select number...</option>
@@ -89,15 +100,18 @@ const CalculatorForm = () => {
               setTouchedFields({ ...touchedFields, propertyType: true })
             }
             onBlurCapture={(e) => {
-              const result = checkData(
-                { ...formData, propertyType: e.target.value },
-                error,
-                formData,
-                touchedFields,
-              );
-              setFormData(result.updatedFormObj);
+              const number = e.target.value;
+              if (isValidPropertyType(number)) {
+                const result = checkData(
+                  { ...formData, propertyType: number },
+                  error,
+                  formData,
+                  touchedFields,
+                );
+                setFormData(result.updatedFormObj);
 
-              setError(result.updatedErrorObj);
+                setError(result.updatedErrorObj);
+              }
             }}
           >
             <option value="">Select number...</option>

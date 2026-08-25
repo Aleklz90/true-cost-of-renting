@@ -17,13 +17,13 @@ export const ResultsBreakdown = ({ result }: { result: Result }) => {
 
   return (
     <form action="" className="w-full">
-      <div className="flex gap-3">
+      <div className="flex gap-1">
         <div className="resultBlock">
-          <p>move-in cash</p>
+          <p>move-in</p>
           <h1>{numberPrettier(result.moveInCash)}</h1>
         </div>
         <div className="resultBlock">
-          <p>first-year total</p>
+          <p>first-year</p>
           <h1>{numberPrettier(result.firstYearTotal)}</h1>
         </div>
         <div className="resultBlock">

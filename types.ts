@@ -1,7 +1,11 @@
+export type Checks = 1 | 2 | 4 | 6 | 12;
+
+export type PropertyType = "apartment" | "villa";
+
 export type inputData = {
   annualRent: number;
-  cheques: number;
-  propertyType: string;
+  cheques: Checks;
+  propertyType: PropertyType;
   furnished: boolean;
   chiller: boolean;
   firstMove: boolean;
@@ -21,7 +25,7 @@ export type Result = {
   housingFee: HousingFee;
   agencyFee: number;
   totalDeposit: number;
-  cheques: number;
+  cheques: Checks;
   cheque: number;
 };
 
