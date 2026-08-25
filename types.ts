@@ -31,15 +31,8 @@ export type Result = {
 
 export type ErrorsObj = {
   annualRent: string;
-  cheques: string;
-  propertyType: string;
 };
 
-export type InitTouchedFieldsType= {
+export type InitTouchedFieldsType = {
   annualRent: boolean;
-  cheques: boolean;
-  propertyType: boolean;
-  furnished: boolean;
-  chiller: boolean;
-  firstMove: boolean;
 };

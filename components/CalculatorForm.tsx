@@ -65,9 +65,6 @@ const CalculatorForm = () => {
             <label htmlFor="cheques">Cheques</label>
             <select
               id="cheques"
-              onFocus={() =>
-                setTouchedFields({ ...touchedFields, cheques: true })
-              }
               onBlurCapture={(e) => {
                 const number = Number(e.target.value);
                 if (isValidNumberOfChecks(number)) {
@@ -91,15 +88,11 @@ const CalculatorForm = () => {
               <option value="12">12</option>
             </select>
           </div>
-          <div className="error">{error.cheques}</div>
         </div>
         <div>
           <label htmlFor="property_type">Property type</label>
           <select
             id="property_type"
-            onFocus={() =>
-              setTouchedFields({ ...touchedFields, propertyType: true })
-            }
             onBlurCapture={(e) => {
               const number = e.target.value;
               if (isValidPropertyType(number)) {
@@ -119,7 +112,6 @@ const CalculatorForm = () => {
             <option value="apartment">apartment</option>
             <option value="villa">villa</option>
           </select>
-          <div className="error">{error.propertyType}</div>
         </div>
         <div className="flex gap-2 flex-col">
           <label htmlFor="furnished">Furnished</label>
@@ -127,7 +119,6 @@ const CalculatorForm = () => {
             type="checkbox"
             id="furnished"
             onClick={() => {
-              setTouchedFields({ ...touchedFields, furnished: true });
               const result = checkData(
                 { ...formData, furnished: !formData.furnished },
                 error,

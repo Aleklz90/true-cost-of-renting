@@ -38,36 +38,6 @@ export const checkData = (
     }
   }
 
-  if (touchedFields.cheques) {
-    if (data.cheques) {
-      updatedFormObj = { ...updatedFormObj, cheques: data.cheques };
-      updatedErrorObj = {
-        ...updatedErrorObj,
-        cheques: "",
-      };
-    } else {
-      updatedErrorObj = {
-        ...updatedErrorObj,
-        cheques: "You have to choose cheques number",
-      };
-    }
-  }
-
-  if (touchedFields.propertyType) {
-    if (data.propertyType) {
-      updatedFormObj = { ...updatedFormObj, propertyType: data.propertyType };
-      updatedErrorObj = {
-        ...updatedErrorObj,
-        propertyType: "",
-      };
-    } else {
-      updatedErrorObj = {
-        ...updatedErrorObj,
-        propertyType: "You have to choose property type",
-      };
-    }
-  }
-
   updatedFormObj = {
     ...updatedFormObj,
     furnished: data.furnished,
@@ -83,9 +53,7 @@ export const buttonCheck = (formData: InputData, error: ErrorsObj) => {
     formData.annualRent &&
     formData.cheques &&
     formData.propertyType &&
-    !error.annualRent &&
-    !error.cheques &&
-    !error.propertyType
+    !error.annualRent
   ) {
     return false;
   } else {

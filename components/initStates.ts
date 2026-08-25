@@ -1,16 +1,9 @@
 export const initErrorObj = {
   annualRent: "",
-  cheques: "",
-  propertyType: "",
 };
 
 export const initTouchedFields = {
   annualRent: false,
-  cheques: false,
-  propertyType: false,
-  furnished: false,
-  chiller: false,
-  firstMove: false,
 };
 
 export const initData = {
