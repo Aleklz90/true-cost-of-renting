@@ -1,10 +1,7 @@
-export const iniErrorObj = {
+export const initErrorObj = {
   annualRent: "",
   cheques: "",
   propertyType: "",
-  furnished: "",
-  chiller: "",
-  firstMove: "",
 };
 
 export const initTouchedFields = {

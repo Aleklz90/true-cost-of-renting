@@ -2,7 +2,7 @@ export type Checks = 1 | 2 | 4 | 6 | 12;
 
 export type PropertyType = "apartment" | "villa";
 
-export type inputData = {
+export type InputData = {
   annualRent: number;
   cheques: Checks;
   propertyType: PropertyType;
@@ -33,12 +33,9 @@ export type ErrorsObj = {
   annualRent: string;
   cheques: string;
   propertyType: string;
-  furnished: string;
-  chiller: string;
-  firstMove: string;
 };
 
-export type initTouchedFieldsObj = {
+export type InitTouchedFieldsType= {
   annualRent: boolean;
   cheques: boolean;
   propertyType: boolean;

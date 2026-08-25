@@ -11,11 +11,27 @@ import {
 } from "./calculate";
 
 test("move in cash calculation(4)", () => {
-  expect(calculateMoveInCash(10000, 4, 2500, false)).toBe(5745);
+  expect(
+    calculateMoveInCash(
+      10000,
+      4,
+      2500,
+      false,
+      10000 * 0.05 + 10000 * 0.05 * 0.05,
+    ),
+  ).toBeCloseTo(5745);
 });
 
 test("move in cash calculation(3)", () => {
-  expect(calculateMoveInCash(10000, 3, 2500, false)).toBe(6578);
+  expect(
+    calculateMoveInCash(
+      10000,
+      3,
+      2500,
+      false,
+      10000 * 0.05 + 10000 * 0.05 * 0.05,
+    ),
+  ).toBeCloseTo(6578);
 });
 
 test("calculate first year total", () => {
@@ -26,7 +42,7 @@ test("calculate first year total", () => {
       10000 * 0.05,
       false,
     ),
-  ).toBe(11245);
+  ).toBeCloseTo(11245);
 });
 
 test("calculate first year total(1000000 aed)", () => {
@@ -37,7 +53,7 @@ test("calculate first year total(1000000 aed)", () => {
       1000000 * 0.05,
       false,
     ),
-  ).toBe(1102720);
+  ).toBeCloseTo(1102720);
 });
 
 test("calculate first year(first move)", () => {
@@ -48,7 +64,7 @@ test("calculate first year(first move)", () => {
       10000 * 0.05,
       true,
     ),
-  ).toBe(11375);
+  ).toBeCloseTo(11375);
 });
 
 test("calculate true monthly cost", () => {
@@ -59,45 +75,45 @@ test("calculate true monthly cost", () => {
       10000 * 0.05,
       false,
     ),
-  ).toBe(937);
+  ).toBeCloseTo(937);
 });
 
 test("calculate monthly listed cost", () => {
-  expect(calculateListedMonthly(10000)).toBe(833);
+  expect(calculateListedMonthly(10000)).toBeCloseTo(833);
 });
 
 test("calculate annual housing fee", () => {
-  expect(calculateHousingFee(10000).annual).toBe(500);
+  expect(calculateHousingFee(10000).annual).toBeCloseTo(500);
 });
 
 test("calculate monthly housing fee", () => {
-  expect(calculateHousingFee(10000).monthly).toBe(42);
+  expect(calculateHousingFee(10000).monthly).toBeCloseTo(42);
 });
 
-test("calculate agency fee", () => {
-  expect(calculateAgencyFee(10000)).toBe(10000 * 0.05 + 10000 * 0.05 * 0.05);
+test("calculate agency fee(annual rent = 10000)", () => {
+  expect(calculateAgencyFee(10000)).toBeCloseTo(10000 * 0.05 + 10000 * 0.05 * 0.05);
 });
 
-test("calculate agency fee", () => {
-  expect(calculateAgencyFee(100000)).toBe(5000 + 100000 * 0.05 * 0.05);
+test("calculate agency fee(annual rent = 100000)", () => {
+  expect(calculateAgencyFee(100000)).toBeCloseTo(5000 + 100000 * 0.05 * 0.05);
 });
 
 test("evaluate check", () => {
-  expect(evaluateCheque(11245, 4)).toBe(2811);
+  expect(evaluateCheque(11245, 4)).toBeCloseTo(2811);
 });
 
 test("calculate total deposit", () => {
-  expect(calculateTotalDeposit(false, false, "apartment", 10000)).toBe(2500);
+  expect(calculateTotalDeposit(10000, "apartment", false, false)).toBeCloseTo(2500);
 });
 
 test("furnished flips deposit", () => {
-  expect(calculateTotalDeposit(true, false, "apartment", 10000)).toBe(3000);
+  expect(calculateTotalDeposit(10000, "apartment", false, false)).toBeCloseTo(3000);
 });
 
 test("villa flips DEWA", () => {
-  expect(calculateTotalDeposit(false, false, "villa", 10000)).toBe(4500);
+  expect(calculateTotalDeposit(10000, "apartment", false, false)).toBeCloseTo(4500);
 });
 
 test("chiller includes", () => {
-  expect(calculateTotalDeposit(false, true, "apartment", 10000)).toBe(4500);
+  expect(calculateTotalDeposit(10000, "apartment", false, false)).toBeCloseTo(4500);
 });

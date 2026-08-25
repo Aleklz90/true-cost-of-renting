@@ -4,31 +4,26 @@ import { EJARI_REGISTRATION } from "@/engine/constants";
 
 export const ResultsBreakdown = ({ result }: { result: Result }) => {
   const numberPrettier = (number: number) => {
-    const str = number.toFixed().toString();
-    let result = "";
-    for (let i = 0; i < str.length; i++) {
-      result = result + str[i];
-      if ((str.length - i - 1) % 3 === 0 && str.length - i - 1 !== 0)
-        result = result + ",";
-    }
-
-    return result;
+    return new Intl.NumberFormat("ar-AE", {
+      style: "currency",
+      currency: "AED",
+    }).format(number);
   };
 
   return (
-    <form action="" className="w-full">
+    <div className="w-full sideblock">
       <div className="flex gap-1">
         <div className="resultBlock">
           <p>move-in</p>
-          <h1>{numberPrettier(result.moveInCash)}</h1>
+          <p>{numberPrettier(result.moveInCash)}</p>
         </div>
         <div className="resultBlock">
           <p>first-year</p>
-          <h1>{numberPrettier(result.firstYearTotal)}</h1>
+          <p>{numberPrettier(result.firstYearTotal)}</p>
         </div>
         <div className="resultBlock">
           <p>eff. monthly</p>
-          <h1>{numberPrettier(result.trueMonthly)}</h1>
+          <p>{numberPrettier(result.trueMonthly)}</p>
         </div>
       </div>
       <div className="bg-[#f7f7f7] rounded-lg h-18  flex items-center px-5 py-3">
@@ -83,11 +78,11 @@ export const ResultsBreakdown = ({ result }: { result: Result }) => {
       <div className="bg-[#f7f7f7] rounded-lg h-18  flex items-center px-5 py-3">
         <FcHome className="w-6 h-6 mr-4" />
         <p>
-          {numberPrettier(result.cheques)} cheques of{" "}
+          {result.cheques} cheques of{" "}
           {numberPrettier(result.cheque)} AED
         </p>
       </div>
-    </form>
+    </div>
   );
 };
 

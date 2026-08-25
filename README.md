@@ -2,7 +2,9 @@
 
 [Calculator for real renting cost evaluation](https://true-cost-of-renting.netlify.app/)
 
-This tool shows the full first-year picture: recurring housing fee, effective monthly vs listed monthly, refundable vs non-refundable split, cheque
+This tool shows the full first-year picture: recurring housing fee, effective monthly vs listed monthly, refundable vs non-refundable split.
+
+
 
 | Constant                 | Value |
 | ------------------------ | ----- |
@@ -17,13 +19,11 @@ This tool shows the full first-year picture: recurring housing fee, effective mo
 | HOUSING_FEE_RATE         | 0.05  |
 | DEWA_ACTIVATION_FEE      | 130   |
 
-<ol>
-    <li>No scraping</li>
-    <li>No accounts, no saved results, no shared links</li>
-    <li>No live chiller-provider rates(one labeled estimate)</li>
-    <li>No dark mode, no animations</li>
-    <li>No component libraries</li>
-</ol>
+1. No scraping
+2. No accounts, no saved results, no shared links
+3. No live chiller-provider rates(one labeled estimate)
+4. No dark mode, no animations
+5. No component libraries
 
 Stack: Next.js + TypeScript + Tailwind + Vitest
 

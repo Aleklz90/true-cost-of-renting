@@ -10,12 +10,14 @@ import {
   DEWA_ACTIVATION_FEE,
   EJARI_REGISTRATION,
 } from "./constants";
+import { PropertyType } from "@/types";
 
 export const calculateMoveInCash = (
   annualRent: number,
   chequeCount: number,
   securityDeposit: number,
   firstMove: boolean,
+  agencyFee: number,
 ) => {
   // Upfront cash to move in = (annualRent / chequeCount) + Agency fee(5%, capped 5000) + Ejari registration + Security deposit
 
@@ -27,14 +29,12 @@ export const calculateMoveInCash = (
     activation = 0;
   }
 
-  return Number(
-    (
-      annualRent / chequeCount +
-      calculateAgencyFee(annualRent) +
-      EJARI_REGISTRATION +
-      securityDeposit +
-      activation
-    ).toFixed(0),
+  return (
+    annualRent / chequeCount +
+    calculateAgencyFee(annualRent) +
+    EJARI_REGISTRATION +
+    securityDeposit +
+    activation
   );
 };
 
@@ -61,39 +61,37 @@ export const calculateTrueMonthly = (
   firstMove: boolean,
 ) => {
   // trueMonthly = (annualRent + agency fee + ejari registration + housing fee) / 12
-  return Number(
-    (
-      calculateFirstYearTotal(annualRent, agencyFee, housingFee, firstMove) / 12
-    ).toFixed(0),
+  return (
+    calculateFirstYearTotal(annualRent, agencyFee, housingFee, firstMove) / 12
   );
 };
 
 export const calculateListedMonthly = (annualRent: number) => {
-  return Number((annualRent / 12).toFixed(0));
+  return annualRent / 12;
 };
 
 export const calculateHousingFee = (annualRent: number) => {
   return {
     annual: annualRent * HOUSING_FEE_RATE,
-    monthly: Number(((annualRent * HOUSING_FEE_RATE) / 12).toFixed(0)),
+    monthly: (annualRent * HOUSING_FEE_RATE) / 12,
   };
 };
 
 export const calculateAgencyFee = (annualRent: number) => {
   const fee =
     annualRent * AGENCY_FEE_RATE + annualRent * AGENCY_FEE_RATE * VAT_RATE;
-  return fee < 5250 ? fee : 5250;
+  return fee < 5000 * (1 + VAT_RATE) ? fee : 5000 * (1 + VAT_RATE);
 };
 
-export const evaluateCheque = (firstYearTotal: number, chequeCount: number) => {
-  return Number((firstYearTotal / chequeCount).toFixed(0));
+export const evaluateCheque = (annualRent: number, chequeCount: number) => {
+  return annualRent / chequeCount;
 };
 
 export const calculateTotalDeposit = (
-  furnished: boolean,
-  chiller: boolean,
-  type: string,
   annualRent: number,
+  type: PropertyType,
+  chiller: boolean,
+  furnished: boolean,
 ) => {
   let total;
 
@@ -105,7 +103,7 @@ export const calculateTotalDeposit = (
   total = furnished
     ? total + annualRent * DEPOSIT_RATE_FURNISHED
     : total + annualRent * DEPOSIT_RATE_UNFURNISHED;
-  console.log(annualRent * DEPOSIT_RATE_FURNISHED);
+
   if (chiller) total = total + CHILLER_DEPOSIT_ESTIMATE;
 
   return total;

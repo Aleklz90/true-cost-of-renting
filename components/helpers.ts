@@ -8,13 +8,13 @@ import {
   evaluateCheque,
   calculateTotalDeposit,
 } from "../engine/calculate";
-import { inputData, ErrorsObj, initTouchedFieldsObj } from "../types";
+import { InputData, ErrorsObj, InitTouchedFieldsType } from "../types";
 
 export const checkData = (
-  data: inputData,
+  data: InputData,
   error: ErrorsObj,
-  formData: inputData,
-  touchedFields: initTouchedFieldsObj,
+  formData: InputData,
+  touchedFields: InitTouchedFieldsType,
 ) => {
   let updatedErrorObj = { ...error };
   let updatedFormObj = { ...formData };
@@ -74,15 +74,11 @@ export const checkData = (
     chiller: data.chiller,
     firstMove: data.firstMove,
   };
-  updatedErrorObj = {
-    ...updatedErrorObj,
-    furnished: "",
-  };
 
   return { updatedFormObj, updatedErrorObj };
 };
 
-export const buttonCheck = (formData: inputData, error: ErrorsObj) => {
+export const buttonCheck = (formData: InputData, error: ErrorsObj) => {
   if (
     formData.annualRent &&
     formData.cheques &&
@@ -97,20 +93,21 @@ export const buttonCheck = (formData: inputData, error: ErrorsObj) => {
   }
 };
 
-export const countResults = (formData: inputData) => {
+export const countResults = (formData: InputData) => {
   const agencyFee = calculateAgencyFee(formData.annualRent);
   const housingFee = calculateHousingFee(formData.annualRent);
   const totalDeposit = calculateTotalDeposit(
-    formData.furnished,
-    formData.chiller,
-    formData.propertyType,
     formData.annualRent,
+    formData.propertyType,
+    formData.chiller,
+    formData.furnished,
   );
   const moveInCash = calculateMoveInCash(
     formData.annualRent,
     formData.cheques,
     totalDeposit,
     formData.firstMove,
+    agencyFee,
   );
   const firstYearTotal = calculateFirstYearTotal(
     formData.annualRent,
@@ -125,7 +122,7 @@ export const countResults = (formData: inputData) => {
     formData.firstMove,
   );
   const listedMonthly = calculateListedMonthly(formData.annualRent);
-  const cheque = evaluateCheque(firstYearTotal, formData.cheques);
+  const cheque = evaluateCheque(formData.annualRent, formData.cheques);
 
   return {
     moveInCash,

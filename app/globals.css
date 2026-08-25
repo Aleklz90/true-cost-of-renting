@@ -34,7 +34,7 @@ body {
     sans-serif;
 }
 
-form {
+.sideblock {
   display: flex;
   flex-direction: column;
   gap: 16px;

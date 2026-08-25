@@ -1,20 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { Result, inputData, Checks, PropertyType } from "../types";
+import { Result, InputData, Checks, PropertyType } from "../types";
 import ResultsBreakdown from "./ResultsBreakdown";
 import { checkData, buttonCheck, countResults } from "./helpers";
 
 import {
-  iniErrorObj,
+  initErrorObj,
   initTouchedFields,
   initData,
   initResult,
 } from "./initStates";
 
 const CalculatorForm = () => {
-  const [formData, setFormData] = useState<inputData>(initData);
-  const [error, setError] = useState(iniErrorObj);
+  const [formData, setFormData] = useState<InputData>(initData);
+  const [error, setError] = useState(initErrorObj);
   const [touchedFields, setTouchedFields] = useState(initTouchedFields);
   const [result, setResult] = useState<Result>(initResult);
 
@@ -23,13 +23,13 @@ const CalculatorForm = () => {
   };
 
   const isValidPropertyType = (v: unknown): v is PropertyType => {
-    return v === "apartment" || v === "value";
+    return v === "apartment" || v === "villa";
   };
 
   return (
     <div className="flex flex-col gap-5 justify-between lg:flex-row p-6">
       <form
-        className="w-full"
+        className="w-full sideblock"
         onSubmit={(e) => {
           e.preventDefault();
           const results = countResults(formData);
@@ -40,8 +40,9 @@ const CalculatorForm = () => {
           <label htmlFor="annual_rent">Annual rent</label>
           <input
             type="text"
+            inputMode="numeric"
             id="annual_rent"
-            onClick={() =>
+            onFocus={() =>
               setTouchedFields({ ...touchedFields, annualRent: true })
             }
             onBlurCapture={(e) => {
@@ -64,7 +65,7 @@ const CalculatorForm = () => {
             <label htmlFor="cheques">Cheques</label>
             <select
               id="cheques"
-              onClick={() =>
+              onFocus={() =>
                 setTouchedFields({ ...touchedFields, cheques: true })
               }
               onBlurCapture={(e) => {
@@ -96,7 +97,7 @@ const CalculatorForm = () => {
           <label htmlFor="property_type">Property type</label>
           <select
             id="property_type"
-            onClick={() =>
+            onFocus={() =>
               setTouchedFields({ ...touchedFields, propertyType: true })
             }
             onBlurCapture={(e) => {
@@ -114,7 +115,7 @@ const CalculatorForm = () => {
               }
             }}
           >
-            <option value="">Select number...</option>
+            <option value="">Select type...</option>
             <option value="apartment">apartment</option>
             <option value="villa">villa</option>
           </select>
@@ -139,7 +140,6 @@ const CalculatorForm = () => {
               setError(result.updatedErrorObj);
             }}
           />
-          <div className="error">{error.furnished}</div>
         </div>
         <div className="flex gap-2 flex-col">
           <label htmlFor="chiller">Chiller included in rent</label>
@@ -159,7 +159,6 @@ const CalculatorForm = () => {
               setError(result.updatedErrorObj);
             }}
           />
-          <div className="error">{error.chiller}</div>
         </div>
         <div className="flex gap-2 flex-col">
           <label htmlFor="first_move">First move in Dubai</label>
@@ -179,7 +178,6 @@ const CalculatorForm = () => {
               setError(result.updatedErrorObj);
             }}
           />
-          <div className="error">{error.firstMove}</div>
         </div>
         <button
           disabled={buttonCheck(formData, error)}
