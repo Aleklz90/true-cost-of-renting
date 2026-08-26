@@ -10,7 +10,7 @@ It takes into account the annual rent, the number of cheques, the type of proper
 
 ## Why listed rent isn't the cost
 
-Fees sit on two independent axes. When you pay, and whether you get it back. agency fee are paid in advance. The security deposit counts toward move-in but not toward first-year cost, because the tenant gets it back.
+Fees sit on two independent axes. When you pay, and whether you get it back. The agency fee is paid upfront and is not refundable. The security deposit counts toward move-in but not toward first-year cost, because the tenant gets it back.
 
 ## Worked example
 
