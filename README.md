@@ -2,13 +2,50 @@
 
 [Calculator for real renting cost evaluation](https://true-cost-of-renting.netlify.app/)
 
-![This tool shows the full first-year picture: recurring housing fee, effective monthly vs listed monthly, refundable vs non-refundable split.]()
+![Screenshot of the calculator](docs/screenshot.png)
+
+## What it computes
+
+It takes into account the annual rent, the number of cheques, the type of property and other parameters and returns the cost of moving in, the real cost for the first year and for each month.
+
+## Why listed rent isn't the cost
+
+Fees sit on two independent axes. When you pay, and whether you get it back. Commissions are paid in advance. This money is not returned to the client. Security deposit in move-in, but not in the first year, because the deposit is returned to the client.
+
+## Worked example
+
+Annual Rent = 10000; Cheques count = 4; Property type = apartment;
+
+move-in = (annual rent / cheque count) + (annual rent * agency fee rate + annual rent * agency fee rate * vat rate) + ejari registration + dewa deposit apartment + dewa deposit apartment + annual rent * deposit rate unfurnished = 
+(10000 / 4) + (10000 * 0.05 + 10000 * 0.05 * 0.05) + 220 + 2000 + 10000 * 0.05 = 5745
+
+first-year = annual rent + agency fee + ejari registration + housing fee = 
+10000 + (10000 * 0.05 + 10000 * 0.05 * 0.05) + 220 + 10000 * 0.05 = 11245
+
+eff. monthly = first-year / 12 = ~937
+
+Same inputs, villa: move-in becomes 7745, up by exactly the DEWA difference. First-year and monthly don't change.
+
+## Scope
+
+Dubai only. Fee rules live in code, not config. No persistence.
 
 1. No scraping
-2. No accounts, no saved results, no shared links
 3. No live chiller-provider rates(one labeled estimate)
-4. No dark mode, no animations
-5. No component libraries
+
+## Run
+
+Stack: Next.js + TypeScript + Tailwind + Vitest
+
+```
+npm install
+
+How to run: npm run dev
+
+How to test: npm run check(tests, lint, typecheck)
+```
+
+## Assumptions
 
 | Constant                 | Value |
 | ------------------------ | ----- |
@@ -23,8 +60,8 @@
 | HOUSING_FEE_RATE         | 0.05  |
 | DEWA_ACTIVATION_FEE      | 130   |
 
-Stack: Next.js + TypeScript + Tailwind + Vitest
 
-How to run: <code>npm run dev</code>
 
-How to test: <code>npm test</code>
+
+
+
