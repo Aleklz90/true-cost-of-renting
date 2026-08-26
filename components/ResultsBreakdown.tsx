@@ -79,7 +79,7 @@ export const ResultsBreakdown = ({ result }: { result: Result }) => {
       <div className="bg-[#f7f7f7] rounded-lg h-18  flex items-center px-5 py-3">
         <FcHome className="w-6 h-6 mr-4" />
         <p>
-          {result.cheques} cheques of {numberPrettier(result.cheque)} AED
+          {result.cheques} cheques of {numberPrettier(result.cheque)}
         </p>
       </div>
     </div>

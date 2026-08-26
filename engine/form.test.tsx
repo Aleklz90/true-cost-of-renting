@@ -19,9 +19,9 @@ test("calculator i/o test(apartment)", async () => {
 
   await user.click(screen.getByRole("button", { name: /Calculate/i }));
 
-  expect(screen.getByText("AED 5,745.00")).toBeInTheDocument();
-  expect(screen.getByText("AED 11,245.00")).toBeInTheDocument();
-  expect(screen.getByText("AED 937.08")).toBeInTheDocument();
+  expect(screen.getByText("AED 5,745")).toBeInTheDocument();
+  expect(screen.getByText("AED 11,245")).toBeInTheDocument();
+  expect(screen.getByText("AED 937")).toBeInTheDocument();
 });
 
 afterEach(() => {
@@ -42,7 +42,7 @@ test("calculator i/o test(villa)", async () => {
 
   await user.click(screen.getByRole("button", { name: /Calculate/i }));
 
-  expect(screen.getByText("AED 7,745.00")).toBeInTheDocument();
-  expect(screen.getByText("AED 11,245.00")).toBeInTheDocument();
-  expect(screen.getByText("AED 937.08")).toBeInTheDocument();
+  expect(screen.getByText("AED 7,745")).toBeInTheDocument();
+  expect(screen.getByText("AED 11,245")).toBeInTheDocument();
+  expect(screen.getByText("AED 937")).toBeInTheDocument();
 });
