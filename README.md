@@ -2,7 +2,7 @@
 
 [Calculator for real renting cost evaluation](https://true-cost-of-renting.netlify.app/)
 
-This tool shows the full first-year picture: recurring housing fee, effective monthly vs listed monthly, refundable vs non-refundable split.
+![This tool shows the full first-year picture: recurring housing fee, effective monthly vs listed monthly, refundable vs non-refundable split.]()
 
 1. No scraping
 2. No accounts, no saved results, no shared links
