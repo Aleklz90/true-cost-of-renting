@@ -10,13 +10,13 @@ It takes into account the annual rent, the number of cheques, the type of proper
 
 ## Why listed rent isn't the cost
 
-Fees sit on two independent axes. When you pay, and whether you get it back. Commissions are paid in advance. This money is not returned to the client. Security deposit in move-in, but not in the first year, because the deposit is returned to the client.
+Fees sit on two independent axes. When you pay, and whether you get it back. agency fee are paid in advance. The security deposit counts toward move-in but not toward first-year cost, because the tenant gets it back.
 
 ## Worked example
 
 Annual Rent = 10000; Cheques count = 4; Property type = apartment;
 
-move-in = (annual rent / cheque count) + (annual rent * agency fee rate + annual rent * agency fee rate * vat rate) + ejari registration + dewa deposit apartment + dewa deposit apartment + annual rent * deposit rate unfurnished = 
+move-in = (annual rent / cheque count) + (annual rent * agency fee rate + annual rent * agency fee rate * vat rate) + ejari registration + dewa deposit apartment + annual rent * deposit rate unfurnished = 
 (10000 / 4) + (10000 * 0.05 + 10000 * 0.05 * 0.05) + 220 + 2000 + 10000 * 0.05 = 5745
 
 first-year = annual rent + agency fee + ejari registration + housing fee = 
@@ -31,7 +31,7 @@ Same inputs, villa: move-in becomes 7745, up by exactly the DEWA difference. Fir
 Dubai only. Fee rules live in code, not config. No persistence.
 
 1. No scraping
-3. No live chiller-provider rates(one labeled estimate)
+2. No live chiller-provider rates(one labeled estimate)
 
 ## Run
 
@@ -40,9 +40,13 @@ Stack: Next.js + TypeScript + Tailwind + Vitest
 ```
 npm install
 
-How to run: npm run dev
+#How to run: 
 
-How to test: npm run check(tests, lint, typecheck)
+npm run dev
+
+#How to test: 
+
+npm run check #(tests, lint, typecheck)
 ```
 
 ## Assumptions
