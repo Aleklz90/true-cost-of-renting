@@ -51,12 +51,7 @@ export const checkData = (
 };
 
 export const buttonCheck = (formData: InputData, error: ErrorsObj) => {
-  if (
-    formData.annualRent &&
-    formData.cheques &&
-    formData.propertyType &&
-    !error.annualRent
-  ) {
+  if (formData.annualRent && !error.annualRent) {
     return false;
   } else {
     return true;
